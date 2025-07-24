@@ -1,0 +1,62 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  name: String!
+  password: String
+  bio: String
+  avatar: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  posts: [Post!]!
+  comments: [CommentEntity!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type CommentEntity {
+  id: Int!
+  content: String!
+  author: User!
+  post: Post!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Like {
+  id: Int!
+  post: Post!
+  user: User!
+  createdAt: DateTime!
+}
+
+type Tag {
+  id: Int!
+  name: String!
+  post: [Post!]!
+}
+
+type Post {
+  id: Int!
+  title: String!
+  slug: String
+  thumbnail: String
+  description: String!
+  published: Boolean!
+  author: User!
+  tags: [Tag!]!
+  comments: [CommentEntity!]!
+  likes: [Like!]!
+  authorId: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  posts: [Post!]!
+}
