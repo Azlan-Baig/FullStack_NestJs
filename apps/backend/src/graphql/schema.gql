@@ -57,6 +57,31 @@ type Post {
   updatedAt: DateTime!
 }
 
+type AuthJwtPayload {
+  id: Float!
+  name: String!
+  avatar: String
+  accessToken: String!
+}
+
 type Query {
   posts: [Post!]!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  signIn(signInput: SignInInput!): AuthJwtPayload!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+  bio: String
+  avatar: String
+}
+
+input SignInInput {
+  email: String!
+  password: String!
 }

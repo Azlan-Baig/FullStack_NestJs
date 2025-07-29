@@ -2,7 +2,7 @@
   "name": "fullstack_nestjs",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
+  "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint"
@@ -17,5 +17,8 @@
   "description": "",
   "devDependencies": {
     "turbo": "^2.5.5"
+  },
+  "dependencies": {
+    "argon2": "^0.43.1"
   }
 }
