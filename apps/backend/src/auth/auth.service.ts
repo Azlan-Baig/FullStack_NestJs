@@ -40,13 +40,31 @@ export class AuthService {
 
   async signIn(user: User) {
     const { accessToken } = await this.generateJwtToken(user.id);
-    console.log(`User ${user.email} signed in successfully and token is ${accessToken}`);
-    
+    console.log(
+      `User ${user.email} signed in successfully and token is ${accessToken}`,
+    );
+
     return {
       id: user.id,
       name: user.name,
       avatar: user.avatar,
       accessToken,
     };
+  }
+
+  async validateJwtUser(userId: number) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    const currentUser = { id: user.id };
+
+    return currentUser;
   }
 }

@@ -4,7 +4,7 @@ import { SignInInput } from './dto/signin.input';
 import { AuthJwtPayload } from './entities/auth-payload.entityy';
 
 @Resolver()
-export class AuthResolver {
+export class AuthResolver { 
   constructor(private readonly authService: AuthService) {}
 
   @Mutation(() => AuthJwtPayload)
